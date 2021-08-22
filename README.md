@@ -19,4 +19,4 @@ idd1.txt:- ITS AN IMPORTANT FILE (DOESNT MATTER WHAT IS IN IT AS IT WILL BE OVER
 
 .env:- Stores the unique key required for doctor registration(The key is 875269ee-28d8-42b8-b0ae-25949661764b)
 
-
+NOTE:- If the program doesn't display the appropriate contents, restart the program and enter the same login details.
