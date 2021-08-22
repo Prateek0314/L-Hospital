@@ -296,6 +296,7 @@ class WritePres(tk.Frame):
         headingLabel1.pack(pady=25)
         button_frame=tk.Frame(self,bg='green')
         button_frame.pack(fill="both",expand=True)
+        idd2=r1()
         def LPage():
             controller.show_frame("DoctorPage")
         backbutton=tk.Button(button_frame,text="Go Back",command=LPage,width=20,height=2)
@@ -303,19 +304,18 @@ class WritePres(tk.Frame):
         con=mysql.connector.connect(host="remotemysql.com",user="nWVwUT8fN5",passwd='QQxCT6BPUx',database='nWVwUT8fN5',port='3306')
         con.autocommit=True
         cursor=con.cursor()
-        cursor.execute("Select * from Patient;")
+        cursor.execute("SELECT DOCNAME FROM Doctor WHERE DOCID='{}';".format(idd2))
+        t=cursor.fetchall()
+        t=reno(t)
+        cursor.execute("SELECT PID, PNAME, APPTTIME FROM Patient WHERE DNAME='{}';".format(t))
         d=cursor.fetchall()
-        l=["Patient ID",'Patient Name','Doctor Name','Appointment Timing']
+        l=['Patient ID, Patient Name, Appointment Time']
         a=""
         for i in d:
-            k=0
-            for j in i:
-                a=a+l[k]+":-"+j+"\n"
-                k=k+1
-            a=a+"\n"
+	        a+="Patient ID:"+i[0]+"\nPatient Name:"+i[1]+"\nAppointment Time:"+i[2]+"\n\n"
         display=tk.Text(button_frame,height=10,width=30)
-        display.grid(row=1,column=0,pady=5,padx=20)
-        display.insert(tk.END,a)  
+        display.grid(row=7,column=0)
+        display.insert(tk.END,a)
         user_label=tk.Label(button_frame,text="Enter Patient ID",height=5,width=20,bg="green")
         user_label.grid(row=2,column=0,pady=5,padx=20)
         pname_label=tk.Label(button_frame,text="Enter Patient Name",height=5,width=20,bg="green")
