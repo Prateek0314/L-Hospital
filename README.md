@@ -21,7 +21,9 @@ idd1.txt:- ITS AN IMPORTANT FILE (DOESNT MATTER WHAT IS IN IT AS IT WILL BE OVER
 
 NOTE:- If the program doesn't display the appropriate contents, restart the program and enter the same login details.
 
-Packages required 
-pythondotenv
+Packages required:-
+
+python-dotenv 
+
 MySQLConnector
 
